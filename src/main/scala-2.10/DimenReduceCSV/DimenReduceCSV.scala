@@ -33,9 +33,9 @@ object DimenReduceCSV {
     val genes = df.columns.drop(1)
     //val sums = df.select("0610007P14Rik").rdd.map(r => r(0).asInstanceOf[Double]).collect().sum
 
-    val i = 0 to 19
-    //val colSums = genes.map(x => df.select(col(x).cast(DoubleType)).rdd.map(r => r(0).asInstanceOf[Double]).collect().sum)
-    val colSums = i.map(x => df.select(col(genes(x)).cast(DoubleType)).rdd.map(r => r(0).asInstanceOf[Double]).collect().sum)
+    //val i = 0 to 19
+    val colSums = genes.map(x => df.select(col(x).cast(DoubleType)).rdd.map(r => r(0).asInstanceOf[Double]).collect().sum)
+    //val colSums = i.map(x => df.select(col(genes(x)).cast(DoubleType)).rdd.map(r => r(0).asInstanceOf[Double]).collect().sum)
 
     //val num = df.select(col("0610025J13Rik").cast(DoubleType)).rdd.map(r => r(0).asInstanceOf[Double]).collect()
     val res = new percentile
@@ -44,9 +44,9 @@ object DimenReduceCSV {
 
     val cutoff = res.computePercentile(colSums, percent.toDouble)
 
-    for(i <- 0 to 19){
-      println(genes(i), colSums(i))
-    }
+    //for(i <- 0 to 19){
+    //  println(genes(i), colSums(i))
+    //}
 
     val index = colSums.zipWithIndex.filter(_._1 > cutoff).map(_._2)
     println(index)
