@@ -1,5 +1,7 @@
 package DimenReduceCSV
 
+// New branch to handle special CSV header, i.e. header line with missing first column name
+
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.SparkConf
