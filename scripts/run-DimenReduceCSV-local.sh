@@ -2,7 +2,7 @@
 
 input_file="hdfs://ip-172-31-14-34.ap-southeast-2.compute.internal/user/luo024/variantSparkTestData/single-cell_RNA-Seq/test.csv"
 percentile_cutoff=50
-output=/home/luo024/single-cell_RNA-Seq/test_out
+output="hdfs://ip-172-31-14-34.ap-southeast-2.compute.internal/user/luo024/variantSparkTestData/single-cell_RNA-Seq/test_out"
 
 spark-submit --packages com.databricks:spark-csv_2.10:1.5.0 \
       --class DimenReduceCSV.DimenReduceCSV \
